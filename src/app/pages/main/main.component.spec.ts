@@ -7,6 +7,7 @@ import { ListItemComponent } from 'src/app/shared/list-item/list-item.component'
 import { DataHeaderComponent } from 'src/app/shared/data-header/data-header.component';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { dataMock } from '@core/mocks/data';
 
 describe('MainComponent', () => {
   let component: MainComponent;
@@ -61,24 +62,7 @@ describe('MainComponent', () => {
     beforeEach(() => {
       generateComponent();
 
-      component.data = [
-        {
-          id: 1,
-          name: 'a',
-          benefits: [],
-          downloadSpeed: 120,
-          uploadSpeed: 10,
-          price: 123
-        },
-        {
-          id: 2,
-          name: 'b',
-          benefits: [],
-          downloadSpeed: 120,
-          uploadSpeed: 10,
-          price: 123
-        },
-      ]
+      component.data = dataMock;
     });
 
     it('should filter a value and insert filtered data on a variable', () => {
@@ -108,24 +92,7 @@ describe('MainComponent', () => {
     beforeEach(() => {
       generateComponent();
 
-      component.data = [
-        {
-          id: 1,
-          name: 'a',
-          benefits: [],
-          downloadSpeed: 100,
-          uploadSpeed: 10,
-          price: 123
-        },
-        {
-          id: 2,
-          name: 'b',
-          benefits: [],
-          downloadSpeed: 120,
-          uploadSpeed: 10,
-          price: 100
-        },
-      ]
+      component.data = dataMock
     });
 
     it('should not change data length', () => {

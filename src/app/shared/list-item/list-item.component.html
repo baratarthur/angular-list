@@ -23,7 +23,7 @@
         </ul>
     </div>
     <div class="tarif__section tarif__actions">
-        <p class="tarif__data">{{data.price | currency:"EUR":"symbol"}}</p>
+        <p class="tarif__data tarif__currency">{{data.price | currency:"EUR":"symbol"}}</p>
         <app-link-button [href]="['tarif', ':id']" label="To tarif"/>
     </div>
 </div>

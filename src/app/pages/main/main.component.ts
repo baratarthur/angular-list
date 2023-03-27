@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { Data } from '@dto/data';
 import { DataService } from '@service/data.service';
-import { sortStrategies } from '@config/sort';
+import { DONT_SWITCH, SWITCH, sortStrategies } from '@config/sort';
 
 import { ListItemComponent } from '@shared/list-item/list-item.component';
 import { DataHeaderComponent } from '@shared/data-header/data-header.component';
@@ -76,27 +76,27 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   sortedByName(data: Data[]): Data[] {
-    return data.sort(this.byName);
+    return data.sort(this.byAlphabeticNameOrder);
   }
 
   sortedByPrice(data: Data[]): Data[] {
-    return data.sort(this.byPrice);
+    return data.sort(this.byRisingPriceOrder);
   }
 
   sortedByDownloadSpeed(data: Data[]): Data[] {
-    return data.sort(this.byDownloadSpeed);
+    return data.sort(this.byDescendingDownloadSpeedOrder);
   }
 
-  byName(a: Data, b: Data): number{
-    return a.name > b.name ? 1 : -1;
+  byAlphabeticNameOrder(data: Data, dataToCompare: Data): number{
+    return data.name < dataToCompare.name ? SWITCH : DONT_SWITCH;
   }
 
-  byDownloadSpeed(a: Data, b: Data): number{
-    return a.downloadSpeed < b.downloadSpeed ? 1 : -1;
+  byDescendingDownloadSpeedOrder(data: Data, dataToCompare: Data): number{
+    return data.downloadSpeed > dataToCompare.downloadSpeed ? SWITCH : DONT_SWITCH;
   }
 
-  byPrice(a: Data, b: Data): number{
-    return a.price > b.price ? 1 : -1;
+  byRisingPriceOrder(data: Data, dataToCompare: Data): number{
+    return data.price < dataToCompare.price ? SWITCH : DONT_SWITCH;
   }
 
 }
