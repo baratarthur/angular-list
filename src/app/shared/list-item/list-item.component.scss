@@ -67,10 +67,8 @@
 
         @media screen and (max-width: 430px) {
             flex-direction: row;
-            gap: 1rem;
+            gap: .5rem;
         }
-        
-
     }
 
     &__speed {
@@ -78,6 +76,7 @@
         border: 1px solid #fd8a02;
         @media screen and (max-width: 430px) {
             border: none;
+            font-size: small;
         }
 
         &__download {
@@ -96,5 +95,17 @@
     &__currency {
         font-weight: bold;
         font-size: x-large;
+
+        @media screen and (max-width: 430px) {
+            font-size: small;
+        }
+    }
+
+    &__name {
+        font-size: x-large;
+
+        @media screen and (max-width: 430px) {
+            font-size: small;
+        }
     }
 }
