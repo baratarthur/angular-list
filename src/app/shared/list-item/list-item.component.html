@@ -1,0 +1,29 @@
+<div class="tarif__container" [attr.data-index]="index" >
+    <div class="tarif__section">
+        <p class="tarif__data">{{data.name}}</p>
+    </div>
+    <div class="tarif__section">
+        <p class="tarif__data">
+            <span *appHideOn="layoutTypes.TABLET">Download</span>
+            <span class="tarif__speed tarif__speed__download">
+                {{data.downloadSpeed | internetSpeed}}
+            </span>
+        </p>
+        <p class="tarif__data" *appHideOn="layoutTypes.MOBILE">
+            <span *appHideOn="layoutTypes.TABLET">Upload</span>
+            <span class="tarif__speed tarif__speed__upload">
+                {{data.uploadSpeed | internetSpeed}}
+            </span>
+        </p>
+    </div>
+    <div class="tarif__section" *appHideOn="layoutTypes.TABLET">
+        <ul class="tarif__data">
+            <li *ngFor="let b of data.benefits.slice(0, 3)">{{b}}</li>
+            <span *ngIf="data.benefits.length > 3">...</span>
+        </ul>
+    </div>
+    <div class="tarif__section tarif__actions">
+        <p class="tarif__data">{{data.price | currency:"EUR":"symbol"}}</p>
+        <app-link-button [href]="['tarif', ':id']" label="To tarif"/>
+    </div>
+</div>

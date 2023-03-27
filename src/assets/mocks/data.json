@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "name": "Tarif b",
+        "downloadSpeed": 120000000,
+        "uploadSpeed": 100000000,
+        "benefits": [
+            "super fast"
+        ],
+        "price": 123.45
+    },
+    {
+        "id": 2,
+        "name": "Tarif a",
+        "downloadSpeed": 100000000,
+        "uploadSpeed": 100000000,
+        "benefits": [
+            "super fast",
+            "super smart"
+        ],
+        "price": 123.45
+    },
+    {
+        "id": 3,
+        "name": "Tarif c",
+        "downloadSpeed": 90000000,
+        "uploadSpeed": 10000000,
+        "benefits": [
+            "low cost"
+        ],
+        "price": 80.00
+    },
+    {
+        "id": 4,
+        "name": "Tarif aa",
+        "downloadSpeed": 90000000,
+        "uploadSpeed": 10000000,
+        "benefits": [
+            "low cost",
+            "low cost",
+            "low cost",
+            "low cost",
+            "low cost"
+        ],
+        "price": 80.00
+    }
+]

@@ -1,0 +1,10 @@
+<article>
+    <app-data-header (onFilter)="filter($event)"
+      (onSort)="orderData($event)"/>
+    <section class="info">
+      <app-list-item class="list-item"
+        *ngFor="let item of (!!filteredData.length? filteredData: data);let i = index"
+        [data]="item"
+        [index]="i + 1"/>
+    </section>
+  </article>

@@ -1,0 +1,20 @@
+<header>
+  <div class="header-form">
+      <label for="filter-name">Search:</label>
+      <input id="filter-name"
+        type="text"
+        name="filter-name"
+        [formControl]="serchValue"/>
+  </div>
+  <div class="header-form">
+      <label for="order-by">Sort by</label>
+      <select id="order-by"
+          name="order-by"
+          [formControl]="orderValue">
+          <option *ngFor="let type of sortTypes"
+            [value]="type">
+            {{type}}
+          </option>
+      </select>
+  </div>
+</header>

@@ -19,10 +19,20 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
+    "strictPropertyInitialization": false,
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@core/*": ["src/app/core/*"],
+      "@config/*": ["src/app/core/config/*"],
+      "@dto/*": ["src/app/core/dtos/*"],
+      "@pipe/*": ["src/app/core/pipes/*"],
+      "@service/*": ["src/app/core/services/*"],
+      "@directive/*": ["src/app/core/directives/*"],
+      "@shared/*": ["src/app/shared/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

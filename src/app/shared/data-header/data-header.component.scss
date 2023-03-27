@@ -1,0 +1,19 @@
+header {
+  padding: 1rem;
+  display: flex;
+  gap: 2rem;
+
+  @media screen and (max-width: 440px) {
+      flex-direction: column;
+  }
+
+  .header-form {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+
+      select, input {
+          padding: .5rem;
+      }
+  }
+}
