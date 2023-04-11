@@ -42,7 +42,7 @@ export class MainComponent implements OnInit, OnDestroy {
     this.subscriptions$.add(
       this.dataService.getData().subscribe({
         next: (data: Data[]) => {
-          this.data = this.sortedByName(data);
+          this.data = this.sortedBy(this.alphabeticNameOrder, data);
         }
       })
     );
@@ -61,41 +61,36 @@ export class MainComponent implements OnInit, OnDestroy {
   orderData(value: sortStrategies): void {
     switch(value) {
       case 'name':
-        this.data = this.sortedByName(this.data);
-        this.filteredData = this.sortedByName(this.filteredData);
+        this.data = this.sortedBy(this.alphabeticNameOrder, this.data);
+        this.filteredData = this.sortedBy(this.alphabeticNameOrder, this.filteredData);
         break;
       case 'download':
-        this.data = this.sortedByDownloadSpeed(this.data);
-        this.filteredData = this.sortedByDownloadSpeed(this.filteredData);
+        this.data = this.sortedBy(this.descendingDownloadSpeedOrder, this.data);
+        this.filteredData = this.sortedBy(this.descendingDownloadSpeedOrder, this.filteredData);
         break;
       case 'price':
-        this.data = this.sortedByPrice(this.data);
-        this.filteredData = this.sortedByPrice(this.filteredData);
+        this.data = this.sortedBy(this.risingPriceOrder, this.data);
+        this.filteredData = this.sortedBy(this.risingPriceOrder, this.filteredData);
         break;
     }
   }
 
-  sortedByName(data: Data[]): Data[] {
-    return data.sort(this.byAlphabeticNameOrder);
+  sortedBy(
+    callback: (data: Data, dataToCompare: Data) => number,
+    data: Data[]
+  ): Data[] {
+    return data.sort(callback);
   }
 
-  sortedByPrice(data: Data[]): Data[] {
-    return data.sort(this.byRisingPriceOrder);
-  }
-
-  sortedByDownloadSpeed(data: Data[]): Data[] {
-    return data.sort(this.byDescendingDownloadSpeedOrder);
-  }
-
-  byAlphabeticNameOrder(data: Data, dataToCompare: Data): number{
+  alphabeticNameOrder(data: Data, dataToCompare: Data): number {
     return data.name < dataToCompare.name ? SWITCH : DONT_SWITCH;
   }
 
-  byDescendingDownloadSpeedOrder(data: Data, dataToCompare: Data): number{
+  descendingDownloadSpeedOrder(data: Data, dataToCompare: Data): number {
     return data.downloadSpeed > dataToCompare.downloadSpeed ? SWITCH : DONT_SWITCH;
   }
 
-  byRisingPriceOrder(data: Data, dataToCompare: Data): number{
+  risingPriceOrder(data: Data, dataToCompare: Data): number {
     return data.price < dataToCompare.price ? SWITCH : DONT_SWITCH;
   }
 
